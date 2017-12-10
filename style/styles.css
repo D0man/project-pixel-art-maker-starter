@@ -36,6 +36,7 @@ td{
 }
 .canvas{
   display: none;
+  transition: all 4s ease-in;
 }
 .header__title{
   font-size: 2rem;
@@ -68,11 +69,15 @@ label+label{
   margin:10px;
 }
 .toolbox__label:hover,
+.toolbox__label:focus,
+.toolbox_button:focus,
 .toolbox_button:hover{
   color: #000;
 }
 .toolbox__label:hover::before,
-.toolbox_button:hover::before{
+.toolbox_button:hover::before,
+.toolbox__label:focus::before,
+.toolbox_button:focus::before{
   position: absolute;
   content:attr(data-content);
   display: block;
@@ -82,6 +87,9 @@ label+label{
   transform: translateX(-50%);
   text-shadow: center;
   text-transform: uppercase;
+}
+.toolbox_button:active::before{
+display: none;
 }
 .active{
   color: #000;

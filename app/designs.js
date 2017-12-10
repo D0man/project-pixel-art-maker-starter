@@ -36,16 +36,12 @@ $(function() {
       const $td = $('td');
       var color = $colorPicker.val();
       var colorBackup = color;
-      var isEraser = false;
-      isEraser = !isEraser;
-      $colorPicker.on('change', () => color = $colorPicker.val());
-      $eraserButton.on('click', () => {
-        $table.css({
-          cursor: 'pointer'
-        });
-        isEraser = !isEraser;
-        return isEraser ? color = colorBackup : color = 'transparent';
+      var isEraser = true;
+      $colorPicker.on('change', () => {
+        color = $colorPicker.val()
+        colorBackup = color;
       });
+      erase();
       $td.on('contextmenu', function(e) {
         e.preventDefault();
         $(this).css({
@@ -90,11 +86,22 @@ $(function() {
         $table.addClass('zoom');
     });
     }
+
     function activateIcon(){
       $fa.on('click', function(){
         $('.active').removeClass('active');
         $(this).addClass('active');
       })
+    }
+
+    function erase(){
+      $eraserButton.on('click', () => {
+        $table.css({
+          cursor: 'pointer'
+        });
+        isEraser = !isEraser;
+        return isEraser ? color = colorBackup : color = 'transparent';
+      });
     }
     function init() {
       if (initialize) {
