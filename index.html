@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Pixel Art Maker!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/reset.css">
@@ -14,10 +15,32 @@
   </header>
   <section class="canvas" id="canvas">
     <h2 class="canvas__title">Design Canvas</h2>
+    <!-- <aside class="canvas__tooltip">
+      <form class="toolbox__form" id="siePicker">
+          <label>Height: <input class="form__input" id="inut_height"></label>
+          <label>Width: <input class="form__input" id="inut_width" ></label>
+          <input class="form_submit" id="ubmit" value="Set" type="submit">
+      </form>
+      <div class="toolbox__menu">
+        <label class="toolbox__label" data-content="Paint Color" tabindex="0">
+          <span class="fa fa-paint-brush active" aria-hidden="true"></span>
+          <input class="toolbox__input" type="color" id="coorPicker">
+        </label>
+        <label class="toolbox__label" data-content="Background Color" tabindex="0">
+          <span class="fa fa-window-maximize" aria-hidden="true"></span>
+          <input class="toolbox__input" type="color" id="bgolor">
+        </label>
+        <button class="toolbox_button" id="gid" type="button" name="button" data-content="Toggle Grid"><span class="fa fa-table" aria-hidden="true"></span></button>
+        <button class="toolbox_button" id="eraer" type="button" name="button" data-content="eraser"><span class="fa fa-eraser" aria-hidden="true"></span></button>
+        <button class="toolbox_button" id="oom" type="button" name="button"><span class="fa fa-search" aria-hidden="true" data-content="zoom" disabled></span></button>
+      </div>
+    </aside> -->
     <div class="canvas__container">
       <table class="canvas__table" id="pixel_canvas"></table>
     </div>
-    <div class="zoom">
+    <div class="zoom__slider">
+      <div class="zoom__slider-plus">+</div>
+      <div class="zoom__slider-minus">-</div>
       <div class="zoom_controler"></div>
     </div>
   </section>
@@ -25,8 +48,9 @@
     <h2 class="toolbox__title">Choose Grid Size</h2>
     <form class="toolbox__form" id="sizePicker">
         <label>Height: <input class="form__input" id="input_height"></label>
-        <label>Width: <input class="form__input" id="input_width" ></label>
+        <label>Width: <input class="form__input" id="input_width"></label>
         <input class="form_submit" id="submit" value="Set" type="submit">
+        <div class="error">Only 3 digits in input</div>
     </form>
     <div class="toolbox__menu">
       <label class="toolbox__label" data-content="Paint Color" tabindex="0">
@@ -39,7 +63,7 @@
       </label>
       <button class="toolbox_button" id="grid" type="button" name="button" data-content="Toggle Grid"><span class="fa fa-table" aria-hidden="true"></span></button>
       <button class="toolbox_button" id="eraser" type="button" name="button" data-content="eraser"><span class="fa fa-eraser" aria-hidden="true"></span></button>
-      <button class="toolbox_button" id="zoom" type="button" name="button"><span class="fa fa-search" aria-hidden="true" data-content="zoom" disabled></span></button>
+      <button class="toolbox_button" id="zoom" type="button" name="button" data-content="scale"><span class="fa fa-search" aria-hidden="true"></span></button>
     </div>
   </section>
   <!-- <footer class="footer">

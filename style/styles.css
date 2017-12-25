@@ -1,6 +1,6 @@
 body{
   background: #e2e1e0;
-  width: 100%;
+  max-width: 100%;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
 }
@@ -17,8 +17,8 @@ td{
 .toolbox,
 .footer,
 .canvas{
-  max-width: 100%;
   width: 1000px;
+  max-width: 100%;
   margin: 20px auto;
   padding: 10px;
   text-align: center;
@@ -36,7 +36,7 @@ td{
 }
 .canvas{
   display: none;
-  transition: all 4s ease-in;
+  position:relative;
 }
 .header__title{
   font-size: 2rem;
@@ -51,16 +51,71 @@ td{
   font-size: 1.5rem;
   line-height:1.5;
 }
+.canvas__tooltip{
+  position: fixed;
+  width: 100px;
+  left:50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.zoom__slider{
+  display: none;
+  width:10px;
+  height:60px;
+  background: #fff;
+  position: fixed;
+  right:250px;
+  top:150px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.zoom__slider-plus,
+.zoom__slider-minus{
+  font-size: 10px;
+  font-weight: 800;
+  display: block;
+  background: #Fff;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  line-height: 10px;
+  position: fixed;
+  border: 1px solid black;
+  cursor: pointer;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.zoom__slider-minus{
+  right: 250px;
+  top: 215px;
+  font-size: 14px;
+}
+.zoom__slider-plus{
+  right: 250px;
+  top: 135px;
+}
+
+.zoom_controler{
+position:absolute;
+border: 1px groove black;
+border-radius: 50%;
+width:9px;
+height:9px;
+bottom: 25px;
+}
 .toolbox__menu,
 .toolbox__form{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 .toolbox__input{
   display: none;
 }
-label+label{
+.toolbox__label+.toolbox__label{
   margin-left: 10px;
 }
 .toolbox__label,
@@ -69,15 +124,12 @@ label+label{
   margin:10px;
 }
 .toolbox__label:hover,
-.toolbox__label:focus,
-.toolbox_button:focus,
 .toolbox_button:hover{
   color: #000;
 }
 .toolbox__label:hover::before,
-.toolbox_button:hover::before,
-.toolbox__label:focus::before,
-.toolbox_button:focus::before{
+.toolbox_button:hover::before
+{
   position: absolute;
   content:attr(data-content);
   display: block;
@@ -88,9 +140,10 @@ label+label{
   text-shadow: center;
   text-transform: uppercase;
 }
-.toolbox_button:active::before{
+.toolbox__label:focus::before ~.toolbox_button::before{
 display: none;
 }
+.permactive,
 .active{
   color: #000;
 }
@@ -100,19 +153,35 @@ display: none;
 }
 
 .canvas__container{
-  margin:0 auto;
   overflow-x:auto;
   overflow-y:auto;
 }
 .canvas__table{
-  max-width:100%;
   background: #FCFCFC;
-  margin: 0 auto;
   table-layout: fixed;
+  margin: 0 auto;
 }
 .grid{
     border: 1px solid black;
 }
-.zoom{
-  transform: scale(3);
+.zoom-X4{
+  transform: scale(0.25);
+}
+.zoom-X-4{
+  margin: 100px auto;
+  transform: scale(4);
+}
+.zoom-X2{
+  transform: scale(0.5);
+}
+.zoom-X-2{
+  transform: scale(2);
+}
+.zoom-X0{
+  transform: scale(1);
+}
+.error{
+  width:100%;
+  visibility: hidden;
+  color: red;
 }
