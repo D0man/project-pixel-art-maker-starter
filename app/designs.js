@@ -93,8 +93,6 @@ $(function() {
     }
     function inputNumberControl(input){
         input.forEach(el=>{el.on('keydown',function(e){
-          console.log(e.keyCode)
-          console.log();
           const KEYARRAYNUMBERS=[48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105];
           const KEYARRAYSPECIAL=[46, 8, 9, 27, 13, 110, 116, 190];
           if(!~$.inArray(e.keyCode, KEYARRAYNUMBERS.concat(KEYARRAYSPECIAL))){
@@ -137,8 +135,9 @@ $(function() {
 
     function zoomControl(){
       const $zoomControl = $('.zoom_controler');
+      let position;
       $('.zoom__slider-plus').on('click',()=>{
-          let position = parseInt($zoomControl.css('top'),10);
+          position = parseInt($zoomControl.css('top'),10);
           if (position >=6){
             position -= 12;
             $zoomControl.css({'top': position});
@@ -149,8 +148,7 @@ $(function() {
           $table.addClass(`zoom-X${scale/6}`);
       });
       $('.zoom__slider-minus').on('click',()=>{
-        console.log('minus')
-          let position= parseInt($zoomControl.css('top'),10);
+          position= parseInt($zoomControl.css('top'),10);
           if (position <=42){
             position += 12;
             $zoomControl.css({'top': position});
@@ -164,7 +162,7 @@ $(function() {
       .on('mousedown',function(event){
         let y= event.clientY
         $('.zoom_controler').on('mousemove',function(e){
-           let position= parseInt($(this).css('top'),10);
+          position= parseInt($(this).css('top'),10);
           if (y-e.clientY>0){
             if (position >=6){
               position -= 12;
