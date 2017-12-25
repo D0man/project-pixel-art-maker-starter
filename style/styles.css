@@ -168,13 +168,14 @@ display: none;
   transform: scale(0.25);
 }
 .zoom-X-4{
-  margin: 100px auto;
+  margin: 5px;
   transform: scale(4);
 }
 .zoom-X2{
   transform: scale(0.5);
 }
 .zoom-X-2{
+  margin: 5px;
   transform: scale(2);
 }
 .zoom-X0{
